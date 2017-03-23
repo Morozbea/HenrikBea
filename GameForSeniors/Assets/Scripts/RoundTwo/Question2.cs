@@ -16,6 +16,7 @@ public class Question2 : MonoBehaviour
     GameObject Abutton2;
     GameObject Abutton3;
     GameObject Abutton4;
+    GameObject StartGameButton;
 
     GameObject pic;
 
@@ -25,6 +26,7 @@ public class Question2 : MonoBehaviour
     bool isRightAnswer1;
 
     Text ChangeTextInstructions;
+    Text InfoAboutPlatformText;
 
     float time;
 
@@ -41,7 +43,10 @@ public class Question2 : MonoBehaviour
         Abutton3 = GameObject.Find("AButton3");
         Abutton4 = GameObject.Find("AButton4");
 
+        StartGameButton = GameObject.Find("ButtonStartGame");
+
         ChangeTextInstructions = GameObject.Find("TextInstructions").GetComponent<Text>();
+        InfoAboutPlatformText = GameObject.Find("InfoAboutPlatformText").GetComponent<Text>();
 
         questionImage.enabled = false;
         questionText.enabled = false;
@@ -50,6 +55,8 @@ public class Question2 : MonoBehaviour
         Abutton3.SetActive(false);
         Abutton4.SetActive(false);
 
+        InfoAboutPlatformText.enabled = false;
+        StartGameButton.SetActive(false);
         isRightAnswer1 = false;
 
         time = 15.0f;
@@ -58,27 +65,19 @@ public class Question2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(time);
-        // om rätt svar -> gå till platform spel
-        
         if (isRightAnswer1)
         {
-            time -= Time.deltaTime;
-            if (time <= 0)
-            {
-                SceneManager.LoadScene("PlatformLevel2");
-            }
-        }
-        // om det är fel svar -> samma scene med samma fråga just nu kan ändras senare
-        //else if (!isRightAnswer1)
-        //{
-        //    time -= Time.deltaTime;
-        //    if (time <= 0)
-        //    {
-        //        SceneManager.LoadScene("Question2");
+            
+            StartGameButton.SetActive(true);
+            InfoAboutPlatformText.enabled = true;
 
-        //    }
-        //}
+            questionImage.enabled = false;
+            questionText.enabled = false;
+            Abutton1.SetActive(false);
+            Abutton2.SetActive(false);
+            Abutton3.SetActive(false);
+            Abutton4.SetActive(false);
+        }
     }
 
     //bottom skåne
@@ -102,7 +101,7 @@ public class Question2 : MonoBehaviour
         //Blue is the right answer -> next is the platform game
         isRightAnswer1 = true;
         ChangeTextInstructions.text = "Rätt Svar! Platform spel startar!";
-        ChangeTextInstructions.color = Color.green;
+        ChangeTextInstructions.color = new Color32(32, 144, 79, 255);
 
         questionImage.enabled = true;
         questionText.enabled = true;
@@ -120,6 +119,11 @@ public class Question2 : MonoBehaviour
         ChangeTextInstructions.text = "Fel Svar! Försök svara igen!";
         ChangeTextInstructions.color = Color.red;
 
+    }
+
+    public void StartPlattformGameButton()
+    {
+        SceneManager.LoadScene("PlatformLevel2");
     }
 
 }

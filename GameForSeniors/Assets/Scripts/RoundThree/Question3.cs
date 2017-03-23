@@ -17,6 +17,8 @@ public class Question3 : MonoBehaviour
     GameObject Abutton3;
     GameObject Abutton4;
 
+    GameObject StartGameButton;
+
     GameObject pic;
 
     public Image questionImage;
@@ -25,6 +27,7 @@ public class Question3 : MonoBehaviour
     bool isRightAnswer1;
 
     Text ChangeTextInstructions;
+    Text InfoAboutPlatformText;
 
     float time;
 
@@ -41,14 +44,19 @@ public class Question3 : MonoBehaviour
         Abutton3 = GameObject.Find("AButton3");
         Abutton4 = GameObject.Find("AButton4");
 
+        StartGameButton = GameObject.Find("ButtonStartGame");
+
         ChangeTextInstructions = GameObject.Find("TextInstructions").GetComponent<Text>();
+        InfoAboutPlatformText = GameObject.Find("TextInfo").GetComponent<Text>();
 
         questionImage.enabled = false;
         questionText.enabled = false;
+        InfoAboutPlatformText.enabled = false;
         Abutton1.SetActive(false);
         Abutton2.SetActive(false);
         Abutton3.SetActive(false);
         Abutton4.SetActive(false);
+        StartGameButton.SetActive(false);
 
         isRightAnswer1 = false;
 
@@ -58,25 +66,18 @@ public class Question3 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(time);
-        // om rätt svar -> gå till platform spel
         if (isRightAnswer1)
         {
-            time -= Time.deltaTime;
-            if (time <= 0)
-            {
-                SceneManager.LoadScene("PlatformLevel3");
-            }
-        }
-        // om det är fel svar -> samma scene med samma fråga just nu kan ändras senare
-        if (!isRightAnswer1)
-        {
-            time -= Time.deltaTime;
-            if (time <= 0)
-            {
-                SceneManager.LoadScene("Question3");
 
-            }
+            StartGameButton.SetActive(true);
+            InfoAboutPlatformText.enabled = true;
+
+            questionImage.enabled = false;
+            questionText.enabled = false;
+            Abutton1.SetActive(false);
+            Abutton2.SetActive(false);
+            Abutton3.SetActive(false);
+            Abutton4.SetActive(false);
         }
     }
 
@@ -100,7 +101,7 @@ public class Question3 : MonoBehaviour
         //Blue is the right answer -> next is the platform game
         isRightAnswer1 = true;
         ChangeTextInstructions.text = "Rätt Svar! Platform spel startar!";
-        ChangeTextInstructions.color = Color.green;
+        ChangeTextInstructions.color = new Color32(32, 144, 79, 255);
 
         questionImage.enabled = true;
         questionText.enabled = true;
@@ -118,6 +119,10 @@ public class Question3 : MonoBehaviour
         ChangeTextInstructions.text = "Fel Svar! Försök svara igen!";
         ChangeTextInstructions.color = Color.red;
 
+    }
+    public void StartPlattformGameButton()
+    {
+        SceneManager.LoadScene("PlatformLevel3");
     }
 
 }
