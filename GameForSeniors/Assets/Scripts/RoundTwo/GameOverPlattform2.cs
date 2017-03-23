@@ -8,6 +8,7 @@ public class GameOverPlattform2 : MonoBehaviour
 {
     
     Text winText;
+    Text banaInfo;
     Image winBG;
     Image winBirdWin;
     float time;
@@ -20,10 +21,12 @@ public class GameOverPlattform2 : MonoBehaviour
         winText = GameObject.Find("TextWin").GetComponent<Text>();
         winBG = GameObject.Find("ImageWinBG").GetComponent<Image>();
         winBirdWin = GameObject.Find("ImageBirdWin").GetComponent<Image>();
+        banaInfo = GameObject.Find("TextInfo").GetComponent<Text>();
         winText.enabled = false;
         winBG.enabled = false;
         winBirdWin.enabled = false;
         isCollided = false;
+        banaInfo.enabled = true;
     }
     void Start()
     {
@@ -40,7 +43,6 @@ public class GameOverPlattform2 : MonoBehaviour
             if (time <= 0)
             {
                 SceneManager.LoadScene("Question3");
-
             }
         }
     }
@@ -50,13 +52,11 @@ public class GameOverPlattform2 : MonoBehaviour
         Debug.Log("collWincheck");
         if (coll.gameObject.tag == "Player")
         {
-
             winText.enabled = true;
             winBG.enabled = true;
             winBirdWin.enabled = true;
+            banaInfo.enabled = false;
             isCollided = true;
-
-
         }
     }
 }

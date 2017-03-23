@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class GameOverPlattform : MonoBehaviour
 {
-
     Text winText;
     Image winBG;
     Image winBirdWin;
     float time;
     bool isCollided;
+    Text banaInfo;
     // Use this for initialization
 
     void Awake()
@@ -20,10 +20,12 @@ public class GameOverPlattform : MonoBehaviour
         winText = GameObject.Find("TextWin").GetComponent<Text>();
         winBG = GameObject.Find("ImageWinBG").GetComponent<Image>();
         winBirdWin = GameObject.Find("ImageBirdWin").GetComponent<Image>();
+        banaInfo = GameObject.Find("TextInfo").GetComponent<Text>();
         winText.enabled = false;
         winBG.enabled = false;
         winBirdWin.enabled = false;
         isCollided = false;
+        banaInfo.enabled = true;
     }
     void Start()
     {
@@ -54,6 +56,7 @@ public class GameOverPlattform : MonoBehaviour
             winText.enabled = true;
             winBG.enabled = true;
             winBirdWin.enabled = true;
+            banaInfo.enabled = false;
             isCollided = true;
             
                 

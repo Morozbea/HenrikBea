@@ -100,7 +100,7 @@ public class Question2 : MonoBehaviour
     {
         //Blue is the right answer -> next is the platform game
         isRightAnswer1 = true;
-        ChangeTextInstructions.text = "Rätt Svar! Platform spel startar!";
+        ChangeTextInstructions.text = "Rätt Svar!";
         ChangeTextInstructions.color = new Color32(32, 144, 79, 255);
 
         questionImage.enabled = true;

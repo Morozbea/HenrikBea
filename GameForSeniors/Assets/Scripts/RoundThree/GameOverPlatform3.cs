@@ -13,7 +13,7 @@ public class GameOverPlatform3 : MonoBehaviour {
     GameObject quitGame;
     float time;
     bool isCollided;
-    Text bana3;
+    Text banaInfo;
     // Use this for initialization
 
     void Awake()
@@ -24,14 +24,14 @@ public class GameOverPlatform3 : MonoBehaviour {
         winBirdWin = GameObject.Find("ImageBirdWin").GetComponent<Image>();
         restartButton = GameObject.Find("ButtonRestart");
         quitGame = GameObject.Find("ButtonQuit");
-        bana3 = GameObject.Find("TextBana").GetComponent<Text>();
+        banaInfo = GameObject.Find("TextBana").GetComponent<Text>();
         winText.enabled = false;
         winBG.enabled = false;
         winBirdWin.enabled = false;
         isCollided = false;
         restartButton.SetActive(false);
         quitGame.SetActive(false);
-        bana3.enabled = true;
+        banaInfo.enabled = true;
     }
     void Start()
     {
@@ -64,7 +64,7 @@ public class GameOverPlatform3 : MonoBehaviour {
             winBirdWin.enabled = true;
             restartButton.SetActive(true);
             quitGame.SetActive(true);
-            bana3.enabled = false;
+            banaInfo.enabled = false;
             isCollided = true;
 
 
