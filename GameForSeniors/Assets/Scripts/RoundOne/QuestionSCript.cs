@@ -47,7 +47,7 @@ public class QuestionSCript : MonoBehaviour
         StartGameButton = GameObject.Find("ButtonStartGame");
 
         ChangeTextInstructions = GameObject.Find("TextInstructions").GetComponent<Text>();
-        InfoAboutPlatformText = GameObject.Find("TextInfoAboutPlattform").GetComponent<Text>();
+        InfoAboutPlatformText = GameObject.Find("TextInfo").GetComponent<Text>();
 
         questionImage.enabled = false;
 
