@@ -129,8 +129,7 @@ public class QuestionSCript : MonoBehaviour
     // right answer till onclick i unity
     public void AnswerIsRight()
     {
-        // rätt svar -> nästa fråga
-        Debug.Log("rätt");
+        // rätt svar -> nästa fråga        
         ChangeTextInstructions.text = "Rätt Svar! Svara på nästa frågan!";
         ChangeTextInstructions.color = new Color32(32, 144, 79, 255);
 
@@ -144,17 +143,13 @@ public class QuestionSCript : MonoBehaviour
         Abutton1.gameObject.SetActive(true);
         
         isRightAnswer1 = true;
-        
     }
 
-    // alla fel svar får samma metod eftersom de gör samma sak
+    // alla fel svar i fråge 1 får samma metod eftersom de gör samma sak
     public void AnswersAreWrong()
-    {
-        Debug.Log("fel");
-        
+    {       
         ChangeTextInstructions.text = "Fel Svar! Försök svara igen!";
         ChangeTextInstructions.color = Color.red;        
-
     }    
 
     public void Question2()
@@ -182,8 +177,7 @@ public class QuestionSCript : MonoBehaviour
         
     }
     public void SecondAnswerIsRight()
-    {
-        //Blue is the right answer -> next is the platform game
+    {        
         isRightAnswer2 = true;
         ChangeTextInstructions.text = "Rätt Svar!";
         ChangeTextInstructions.color = new Color32(32, 144, 79, 255);
@@ -201,12 +195,9 @@ public class QuestionSCript : MonoBehaviour
     }
 
     public void SecondAnswersAreWrong()
-    {
-        isRightAnswer2 = false;
+    {        
         ChangeTextInstructions.text = "Fel Svar! Försök svara igen!";
         ChangeTextInstructions.color = Color.red;
-
-
     }
 
     public void StartPlattformGameButton()

@@ -6,90 +6,108 @@ using UnityEngine.SceneManagement;
 
 public class Question2 : MonoBehaviour
 {
+    // denna script är för den andra frågescenen
+    Button Abutton1;
+    Button Abutton2;
+    Button Abutton3;
+    Button Abutton4;
 
-    // Denna script är för den första scenen
-    GameObject Qbutton1;
-    GameObject Qbutton2;
-    GameObject Qbutton3;
-
-    GameObject Abutton1;
-    GameObject Abutton2;
-    GameObject Abutton3;
-    GameObject Abutton4;
     GameObject StartGameButton;
 
-    GameObject pic;
-
     public Image questionImage;
-    public Text questionText;
 
-    bool isRightAnswer1;
+    Text questionText;
 
     Text ChangeTextInstructions;
     Text InfoAboutPlatformText;
 
-    float time;
-
+    Text buttonTextA1;
+    Text buttonTextA2;
+    Text buttonTextA3;
+    Text buttonTextA4;
+   
+    bool isRightAnswer1;
+    bool isRightAnswer2;
 
     // Use this for initialization
     void Start()
     {
-        Qbutton1 = GameObject.Find("Button1");
-        Qbutton2 = GameObject.Find("Button2");
-        Qbutton3 = GameObject.Find("Button3");
-
-        Abutton1 = GameObject.Find("AButton1");
-        Abutton2 = GameObject.Find("AButton2");
-        Abutton3 = GameObject.Find("AButton3");
-        Abutton4 = GameObject.Find("AButton4");
-
+        Abutton1 = GameObject.Find("AButton1").GetComponent<Button>();
+        Abutton2 = GameObject.Find("AButton2").GetComponent<Button>();
+        Abutton3 = GameObject.Find("AButton3").GetComponent<Button>();
+        Abutton4 = GameObject.Find("AButton4").GetComponent<Button>();
         StartGameButton = GameObject.Find("ButtonStartGame");
 
         ChangeTextInstructions = GameObject.Find("TextInstructions").GetComponent<Text>();
         InfoAboutPlatformText = GameObject.Find("TextInfo").GetComponent<Text>();
+        buttonTextA1 = GameObject.Find("TextA1").GetComponent<Text>();
+        buttonTextA2 = GameObject.Find("TextA2").GetComponent<Text>();
+        buttonTextA3 = GameObject.Find("TextA3").GetComponent<Text>();
+        buttonTextA4 = GameObject.Find("TextA4").GetComponent<Text>();
+        questionText = GameObject.Find("QuestionUpText").GetComponent<Text>();
 
         questionImage.enabled = false;
         questionText.enabled = false;
-        Abutton1.SetActive(false);
-        Abutton2.SetActive(false);
-        Abutton3.SetActive(false);
-        Abutton4.SetActive(false);
+        //Abutton1.enabled = false;
+        //Abutton2.enabled = false;
+        //Abutton3.enabled = false;
+        //Abutton4.enabled = false;
+        Abutton1.gameObject.SetActive(false);
+        Abutton2.gameObject.SetActive(false);
+        Abutton3.gameObject.SetActive(false);
+        Abutton4.gameObject.SetActive(false);
 
         InfoAboutPlatformText.enabled = false;
         StartGameButton.SetActive(false);
         isRightAnswer1 = false;
-
-        time = 15.0f;
+        isRightAnswer2 = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isRightAnswer1)
+        
+    }
+
+    void LateUpdate()
+    {
+        if (isRightAnswer1 == true)
         {
-            
+            SecondQuestion();
+        }
+
+        if (isRightAnswer2)
+        {
+
             StartGameButton.SetActive(true);
             InfoAboutPlatformText.enabled = true;
 
             questionImage.enabled = false;
             questionText.enabled = false;
-            Abutton1.SetActive(false);
-            Abutton2.SetActive(false);
-            Abutton3.SetActive(false);
-            Abutton4.SetActive(false);
+            Abutton1.gameObject.SetActive(false);
+            Abutton2.gameObject.SetActive(false);
+            Abutton3.gameObject.SetActive(false);
+            Abutton4.gameObject.SetActive(false);
+            Abutton1.enabled = false;
+            Abutton2.enabled = false;
+            Abutton3.enabled = false;
+            Abutton4.enabled = false;
         }
     }
 
-    //bottom skåne
+    //mid sverige
     public void Question1Pressed()
-    {
-        
+    {        
         questionImage.enabled = true;
         questionText.enabled = true;
-        Abutton1.SetActive(true);
-        Abutton2.SetActive(true);
-        Abutton3.SetActive(true);
-        Abutton4.SetActive(true);
+        Abutton1.enabled = true;
+        Abutton2.enabled = true;
+        Abutton3.enabled = true;
+        Abutton4.enabled = true;
+        Abutton1.gameObject.SetActive(true);
+        Abutton2.gameObject.SetActive(true);
+        Abutton3.gameObject.SetActive(true);
+        Abutton4.gameObject.SetActive(true);
         ChangeTextInstructions.text = "Svara på frågan!";
         ChangeTextInstructions.color = Color.yellow;
     }
@@ -97,28 +115,73 @@ public class Question2 : MonoBehaviour
     // här kommer 2 metoder för de fyra svar knappar
     // right answer till onclick i unity
     public void AnswerIsRight()
-    {
-        //Blue is the right answer -> next is the platform game
+    {        
+       
+        ChangeTextInstructions.text = "Rätt Svar! Svara på nästa frågan!";
+        ChangeTextInstructions.color = new Color32(32, 144, 79, 255);
+
+        questionImage.enabled = true;
+        questionText.enabled = true;
+
+        Abutton1.enabled = false;
+        Abutton2.enabled = true;
+        Abutton3.enabled = true;
+        Abutton4.enabled = true;
+        Abutton1.gameObject.SetActive(true);
         isRightAnswer1 = true;
+    }
+
+    // alla fel svar i fråge 1 får samma metod eftersom de gör samma sak
+    public void AnswersAreWrong()
+    {        
+        ChangeTextInstructions.text = "Fel Svar! Försök svara igen!";
+        ChangeTextInstructions.color = Color.red;
+    }
+
+    public void SecondQuestion()
+    {
+        buttonTextA1.text = "Enköping"; 
+        buttonTextA2.text = "Krösastaden";
+        buttonTextA3.text = "Villekulla";
+        buttonTextA4.text = "Vadköping";// rätt svar
+        questionText.text = "Hjalmar Bergman är känd författare från Närke, vilken påhittad stad skriver han mycket om?";
+        questionImage.enabled = true;
+        questionText.enabled = true;
+        Abutton1.enabled = true;
+        Abutton2.enabled = true;
+        Abutton3.enabled = true;
+        Abutton4.enabled = true;
+        Abutton1.gameObject.SetActive(true);
+        Abutton2.gameObject.SetActive(true);
+        Abutton3.gameObject.SetActive(true);
+        Abutton4.gameObject.SetActive(true);
+        Abutton4.onClick.AddListener(SecondAnswerIsRight);
+        Abutton1.onClick.AddListener(SecondAnswersAreWrong);
+        Abutton2.onClick.AddListener(SecondAnswersAreWrong);
+        Abutton3.onClick.AddListener(SecondAnswersAreWrong);
+    }
+
+    public void SecondAnswerIsRight()
+    {
+        isRightAnswer2 = true;
         ChangeTextInstructions.text = "Rätt Svar!";
         ChangeTextInstructions.color = new Color32(32, 144, 79, 255);
 
         questionImage.enabled = true;
         questionText.enabled = true;
-        Abutton1.SetActive(false);
-        Abutton2.SetActive(false);
-        Abutton3.SetActive(false);
-        Abutton4.SetActive(true);
-
+        Abutton1.gameObject.SetActive(true);
+        Abutton2.gameObject.SetActive(false);
+        Abutton3.gameObject.SetActive(false);
+        Abutton4.gameObject.SetActive(false);
+        Abutton1.enabled = false;
+        Abutton2.enabled = false;
+        Abutton3.enabled = false;
+        Abutton4.enabled = false;
     }
-
-    // alla fel svar får samma metod eftersom de gör samma sak
-    public void AnswersAreWrong()
+    public void SecondAnswersAreWrong()
     {
-        isRightAnswer1 = false;
         ChangeTextInstructions.text = "Fel Svar! Försök svara igen!";
         ChangeTextInstructions.color = Color.red;
-
     }
 
     public void StartPlattformGameButton()
