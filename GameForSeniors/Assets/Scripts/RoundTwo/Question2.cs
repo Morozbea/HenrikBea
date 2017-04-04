@@ -15,6 +15,7 @@ public class Question2 : MonoBehaviour
     GameObject StartGameButton;
 
     public Image questionImage;
+    
 
     Text questionText;
 
@@ -28,6 +29,7 @@ public class Question2 : MonoBehaviour
    
     bool isRightAnswer1;
     bool isRightAnswer2;
+   
 
     // Use this for initialization
     void Start()
@@ -36,6 +38,7 @@ public class Question2 : MonoBehaviour
         Abutton2 = GameObject.Find("AButton2").GetComponent<Button>();
         Abutton3 = GameObject.Find("AButton3").GetComponent<Button>();
         Abutton4 = GameObject.Find("AButton4").GetComponent<Button>();
+        
         StartGameButton = GameObject.Find("ButtonStartGame");
 
         ChangeTextInstructions = GameObject.Find("TextInstructions").GetComponent<Text>();
@@ -45,7 +48,9 @@ public class Question2 : MonoBehaviour
         buttonTextA3 = GameObject.Find("TextA3").GetComponent<Text>();
         buttonTextA4 = GameObject.Find("TextA4").GetComponent<Text>();
         questionText = GameObject.Find("QuestionUpText").GetComponent<Text>();
+        
 
+       
         questionImage.enabled = false;
         questionText.enabled = false;
         //Abutton1.enabled = false;
@@ -61,6 +66,7 @@ public class Question2 : MonoBehaviour
         StartGameButton.SetActive(false);
         isRightAnswer1 = false;
         isRightAnswer2 = false;
+       
     }
 
     // Update is called once per frame
@@ -182,6 +188,8 @@ public class Question2 : MonoBehaviour
         Abutton2.enabled = false;
         Abutton3.enabled = false;
         Abutton4.enabled = false;
+        
+
     }
     public void SecondAnswersAreWrong()
     {

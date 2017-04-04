@@ -12,10 +12,12 @@ public class Question3 : MonoBehaviour
     Button Abutton2;
     Button Abutton3;
     Button Abutton4;
+    Button norraSverigeButton;
 
     GameObject StartGameButton;
     
     public Image questionImage;
+    public Image marker;
 
     Text questionText;
 
@@ -29,6 +31,7 @@ public class Question3 : MonoBehaviour
 
     Text ChangeTextInstructions;
     Text InfoAboutPlatformText;
+    
 
     // Use this for initialization
     void Start()
@@ -37,6 +40,7 @@ public class Question3 : MonoBehaviour
         Abutton2 = GameObject.Find("AButton2").GetComponent<Button>();
         Abutton3 = GameObject.Find("AButton3").GetComponent<Button>();
         Abutton4 = GameObject.Find("AButton4").GetComponent<Button>();
+        norraSverigeButton = GameObject.Find("ButtonTop").GetComponent<Button>();
         
         StartGameButton = GameObject.Find("ButtonStartGame");
         
@@ -48,6 +52,7 @@ public class Question3 : MonoBehaviour
         buttonTextA2 = GameObject.Find("TextA2").GetComponent<Text>();
         buttonTextA3 = GameObject.Find("TextA3").GetComponent<Text>();
         buttonTextA4 = GameObject.Find("TextA4").GetComponent<Text>();
+        marker = GameObject.Find("ImageMarker").GetComponent<Image>();
 
         questionImage.enabled = false;
         questionText.enabled = false;
@@ -64,6 +69,7 @@ public class Question3 : MonoBehaviour
 
         isRightAnswer1 = false;
         isRightAnswer2 = false;
+        marker.enabled = false;
     }
 
     // Update is called once per frame
@@ -185,6 +191,8 @@ public class Question3 : MonoBehaviour
         Abutton3.enabled = false;
         Abutton4.enabled = false;
         isRightAnswer2 = true;
+        marker.enabled = true;
+        norraSverigeButton.gameObject.SetActive(false);
     }
 
     public void SecondAnswersAreWrong()
