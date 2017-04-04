@@ -155,6 +155,10 @@ public class Question2 : MonoBehaviour
         Abutton2.gameObject.SetActive(true);
         Abutton3.gameObject.SetActive(true);
         Abutton4.gameObject.SetActive(true);
+        Abutton1.onClick.RemoveAllListeners();
+        Abutton2.onClick.RemoveAllListeners();
+        Abutton3.onClick.RemoveAllListeners();
+        Abutton4.onClick.RemoveAllListeners();
         Abutton4.onClick.AddListener(SecondAnswerIsRight);
         Abutton1.onClick.AddListener(SecondAnswersAreWrong);
         Abutton2.onClick.AddListener(SecondAnswersAreWrong);
@@ -163,6 +167,7 @@ public class Question2 : MonoBehaviour
 
     public void SecondAnswerIsRight()
     {
+        Debug.Log("rätt2");
         isRightAnswer2 = true;
         ChangeTextInstructions.text = "Rätt Svar!";
         ChangeTextInstructions.color = new Color32(32, 144, 79, 255);
@@ -180,6 +185,7 @@ public class Question2 : MonoBehaviour
     }
     public void SecondAnswersAreWrong()
     {
+        Debug.Log("fel2");
         ChangeTextInstructions.text = "Fel Svar! Försök svara igen!";
         ChangeTextInstructions.color = Color.red;
     }

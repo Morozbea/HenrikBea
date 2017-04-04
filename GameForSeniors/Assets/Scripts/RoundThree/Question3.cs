@@ -37,7 +37,9 @@ public class Question3 : MonoBehaviour
         Abutton2 = GameObject.Find("AButton2").GetComponent<Button>();
         Abutton3 = GameObject.Find("AButton3").GetComponent<Button>();
         Abutton4 = GameObject.Find("AButton4").GetComponent<Button>();
+        
         StartGameButton = GameObject.Find("ButtonStartGame");
+        
 
         ChangeTextInstructions = GameObject.Find("TextInstructions").GetComponent<Text>();
         InfoAboutPlatformText = GameObject.Find("TextInfo").GetComponent<Text>();
@@ -155,15 +157,20 @@ public class Question3 : MonoBehaviour
         Abutton2.gameObject.SetActive(true);
         Abutton3.gameObject.SetActive(true);
         Abutton4.gameObject.SetActive(true);
+        Abutton1.onClick.RemoveAllListeners();
+        Abutton2.onClick.RemoveAllListeners();
+        Abutton3.onClick.RemoveAllListeners();
+        Abutton4.onClick.RemoveAllListeners();
         Abutton4.onClick.AddListener(SecondAnswersAreWrong);
         Abutton1.onClick.AddListener(SecondAnswersAreWrong);
         Abutton2.onClick.AddListener(SecondAnswersAreWrong);
         Abutton3.onClick.AddListener(SecondAnswerIsRight);
+
     }
 
     public void SecondAnswerIsRight()
     {
-        Debug.Log("rätt");
+        Debug.Log("rätt3");
         ChangeTextInstructions.text = "Rätt Svar!";
         ChangeTextInstructions.color = new Color32(32, 144, 79, 255);
 
@@ -182,7 +189,7 @@ public class Question3 : MonoBehaviour
 
     public void SecondAnswersAreWrong()
     {
-        Debug.Log("fel");
+        Debug.Log("fel3");
         ChangeTextInstructions.text = "Fel Svar! Försök svara igen!";
         ChangeTextInstructions.color = Color.red;
     }
